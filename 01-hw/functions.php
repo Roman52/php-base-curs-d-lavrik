@@ -36,7 +36,7 @@ function getArticles(): array {
 function addArticle(string $title, string $content): bool {
     $articles = getArticles();
 
-    $lastId = end($articles)['id'];
+    $lastId = end($articles)['id'] ?? 0;
     $id = $lastId + 1;
 
     $articles[$id] = [

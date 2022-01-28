@@ -23,9 +23,9 @@ endif;
 ?>
 
 <div class="form">
-	<? if ($isSend): ?>
+	<?php if ($isSend): ?>
 		<p>The article is added.</p>
-	<? else: ?>
+	<?php else: ?>
 		<form method="post">
 			Title:<br>
 			<input type="text" name="title" value="<?= $title?>"><br>
@@ -37,7 +37,7 @@ endif;
 			<button>Send</button>
 			<p><?=$err?></p>
 		</form>
-	<? endif; ?>
+	<?php endif; ?>
 </div>
 <hr>
 <a href="index.php">Move to main page</a>

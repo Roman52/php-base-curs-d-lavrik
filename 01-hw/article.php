@@ -8,19 +8,19 @@ $hasPost = articleExists($id);
 ?>
 
 <div class="content">
-	<? if($hasPost): ?>
+	<?php if ($hasPost): ?>
 		<div class="article">
-			<h1><?=$post['title']?></h1>
-			<div><?=$post['content']?></div>
+			<h1><?= $post['title'] ?></h1>
+			<div><?= $post['content'] ?></div>
 			<hr>
-			<a href="edit.php?id=<?=$id?>">Edit | </a>
-			<a href="delete.php?id=<?=$id?>">Remove</a>
+			<a href="edit.php?id=<?= $id ?>">Edit | </a>
+			<a href="delete.php?id=<?= $id ?>">Remove</a>
 		</div>
-	<? else: ?>
+	<?php else: ?>
 		<div class="e404">
 			<h1>Страница не найдена!</h1>
 		</div>
-	<? endif; ?>
+	<?php endif; ?>
 </div>
 <hr>
 <a href="index.php">Move to main page</a>

@@ -10,7 +10,7 @@ $postEdited = false;
 
 $hasPost = articleExists($id);
 if (!$hasPost) :
-    $err = 'Такой статьи не существует!';
+	exit('Такой страницы не существует! <br> <a href="/index.php">На главную</a>');
 endif;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') :
@@ -24,16 +24,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') :
     else :
         $postEdited = editArticle($id, $title, $content);
     endif;
+else :
+	$articles = getArticles();
+	$title = $articles[$id]['title'];
+	$content = $articles[$id]['content'];
 endif;
 ?>
 
 <div class="form">
-    <? if ($postEdited): ?>
+    <?php if ($postEdited): ?>
         <p>The article is edited.</p>
-    <? else: ?>
+    <?php else: ?>
         <form method="post">
             Title:<br>
-            <input type="text" name="title" value="<?= $title?>"><br>
+            <input type="text" name="title" value="<?=$title?>"><br>
             <br>
             Content:<br>
             <textarea name="content" id="" cols="30" rows="10"><?=$content?></textarea>
@@ -42,7 +46,7 @@ endif;
             <button>Send</button>
             <p><?=$err?></p>
         </form>
-    <? endif; ?>
+    <?php endif; ?>
 </div>
 <hr>
 <a href="index.php">Move to main page</a>

@@ -10,7 +10,7 @@ $postRemoved = false;
 if ($hasPost) :
     $postRemoved = removeArticle($id);
     if ($postRemoved) :
-        echo '<h1>The article is removed.<h1>';
+        echo '<h1>The article is removed.</h1>';
     endif;
 else :
     echo '<h1>Error!</h1>';
