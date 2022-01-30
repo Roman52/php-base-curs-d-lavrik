@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-include_once('functions.php');
+include_once('model/articles.php');
 
 $isSend = false;
 $err = '';
