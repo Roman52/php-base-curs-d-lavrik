@@ -11,6 +11,7 @@ addLogs($ip, $currentUrl, $refUrl);
 ?>
 
 <a href="add.php">Add article</a>
+<a href="/logs.php"> | Logs</a>
 
 <hr>
 <div class="articles">

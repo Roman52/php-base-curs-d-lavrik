@@ -1,10 +1,16 @@
 <?php
-include_once ('model/logs.php');
-$logs = getLogs();
+$files = scandir('logs');
 
-echo '<pre>';
-print_r($logs);
-echo '</pre>';
+$logsFiles = array_filter($files, function($f){
+	return is_file("logs/$f");
+});
+?>
 
-echo memory_get_usage();
+<ul class="logs-list">
+	<?php foreach ($logsFiles as $file) : ?>
+		<li class="log-file"><a href="/log.php?date=<?=$file?>"><?=$file?></a></li>
+	<?php endforeach; ?>
+</ul>
 
+<hr>
+<a href="/index.php">Main page</a>
