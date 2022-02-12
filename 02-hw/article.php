@@ -7,11 +7,7 @@ $articles = getArticles();
 $id = (int)($_GET['id'] ?? '');
 $post = $articles[$id] ?? null;
 $hasPost = articleExists($id);
-
-$ip = $_SERVER['REMOTE_ADDR'];
-$currentUrl = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-$refUrl = $_SERVER['HTTP_REFERER'] ?? null;
-addLogs($ip, $currentUrl, $refUrl);
+addLogs();
 ?>
 
 <div class="content">

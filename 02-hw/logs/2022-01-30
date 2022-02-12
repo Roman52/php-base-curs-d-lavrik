@@ -1,9 +1,0 @@
-21:10:30|127.0.0.1|02-hw.loc/index.php|https://02-hw.loc/article.php?id=6
-21:10:32|127.0.0.1|02-hw.loc/article.php?id=6|https://02-hw.loc/index.php
-21:10:33|127.0.0.1|02-hw.loc/edit.php?id=6|https://02-hw.loc/article.php?id=6
-21:10:34|127.0.0.1|02-hw.loc/article.php?id=6|https://02-hw.loc/index.php
-21:10:35|127.0.0.1|02-hw.loc/delete.php?id=6|https://02-hw.loc/article.php?id=6
-21:10:36|127.0.0.1|02-hw.loc/index.php|https://02-hw.loc/delete.php?id=6
-21:10:38|127.0.0.1|02-hw.loc/add.php|https://02-hw.loc/index.php
-21:10:41|127.0.0.1|02-hw.loc/add.php|https://02-hw.loc/add.php
-21:10:42|127.0.0.1|02-hw.loc/index.php|https://02-hw.loc/add.php

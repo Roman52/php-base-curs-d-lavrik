@@ -1,6 +1,10 @@
 <?php
 include_once ('model/logs.php');
 $date = $_GET['date'] ?? '';
+
+if (!hasLog($date)) {
+	exit('Не корректная дата');
+}
 $logs = getLogs($date);
 ?>
 
@@ -13,14 +17,10 @@ $logs = getLogs($date);
 			<td>Ref Url</td>
 		</tr>
 		<?php foreach($logs as $log): ?>
-			<tr>
+			<tr <?php if (!isValidUrl($log['url'])) echo 'style="color:red;"'; ?>>
 				<td><?=$log['time']?></td>
 				<td><?=$log['ip']?></td>
-				<td>
-					<?php $log['url'] = checkUrl($log['url']); ?>
-					<?=$log['url']?>
-				</td>
-				<?php $log['ref-url'] = checkUrl($log['ref-url']); ?>
+				<td><?=$log['url']?></td>
 				<td><?=$log['ref-url']?></td>
 			</tr>
 		<?php endforeach; ?>

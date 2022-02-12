@@ -1,8 +1,8 @@
 <?php
+include_once ('model/logs.php');
 $files = scandir('logs');
-
 $logsFiles = array_filter($files, function($f){
-	return is_file("logs/$f");
+	return isValidDate($f);
 });
 ?>
 

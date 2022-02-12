@@ -13,19 +13,19 @@ $currentUrl = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 $refUrl = $_SERVER['HTTP_REFERER'] ?? null;
 addLogs($ip, $currentUrl, $refUrl);
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') :
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$title = trim($_POST['title']);
 	$content = trim($_POST['content']);
 
-	if ($title === '' || $content === '') :
+	if ($title === '' || $content === '') {
 		$err = 'Заполните все поля!';
-	elseif (mb_strlen($content, 'UTF8') < 5) :
+	} elseif (mb_strlen($content, 'UTF8') < 5) {
 		$err = 'Текст не короче 5 символов!';
-	else :
+	} else {
 		addArticle($title, $content);
 		$isSend = true;
-	endif;
-endif;
+	}
+}
 ?>
 
 <div class="form">

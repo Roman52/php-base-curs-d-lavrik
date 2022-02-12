@@ -8,10 +8,7 @@ $id = (int)($_GET['id'] ?? '');
 $hasPost = $articles[$id] ?? null;
 $postRemoved = false;
 
-$ip = $_SERVER['REMOTE_ADDR'];
-$currentUrl = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-$refUrl = $_SERVER['HTTP_REFERER'] ?? null;
-addLogs($ip, $currentUrl, $refUrl);
+addLogs();
 
 if ($hasPost) {
 	$postRemoved = removeArticle($id);

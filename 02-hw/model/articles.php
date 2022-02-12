@@ -4,25 +4,25 @@ declare(strict_types=1);
 function editArticle(int $id, string $title, string $content): bool {
     $articles = getArticles();
 
-    if (isset($articles[$id])) :
-        $articles[$id] = [
-            'id' => $id,
-            'title' => $title,
-            'content' => $content
-        ];
-        saveArticles($articles);
+    if (isset($articles[$id])) {
+	    $articles[$id] = [
+		    'id' => $id,
+		    'title' => $title,
+		    'content' => $content
+	    ];
+	    saveArticles($articles);
 
-        return true;
-    endif;
+	    return true;
+    }
 
     return false;
 }
 
 function articleExists(int $id): bool {
     $articles = getArticles();
-    if (isset($articles[$id])) :
-        return true;
-    endif;
+    if (isset($articles[$id])) {
+	    return true;
+    }
 
     return false;
 }
@@ -51,12 +51,12 @@ function addArticle(string $title, string $content): bool {
 function removeArticle(int $id): bool {
     $articles = getArticles();
 
-    if (isset($articles[$id])) :
-        unset($articles[$id]);
-        saveArticles($articles);
+    if (isset($articles[$id])) {
+	    unset($articles[$id]);
+	    saveArticles($articles);
 
-        return true;
-    endif;
+	    return true;
+    }
 
     return false;
 }

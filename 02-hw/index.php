@@ -4,10 +4,7 @@ include_once('model/articles.php');
 include_once('model/logs.php');
 $articles = getArticles();
 
-$ip = $_SERVER['REMOTE_ADDR'];
-$currentUrl = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-$refUrl = $_SERVER['HTTP_REFERER'] ?? null;
-addLogs($ip, $currentUrl, $refUrl);
+addLogs();
 ?>
 
 <a href="add.php">Add article</a>
