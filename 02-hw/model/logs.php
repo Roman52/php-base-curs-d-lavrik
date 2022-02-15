@@ -4,12 +4,13 @@ declare(strict_types=1);
 function addLogs(): bool {
 	$currentDate = date('Y-m-d');
 	$currentTime = date('H:i:s');
+    $refUrl = $_SERVER['HTTP_REFERER'] ?? '';
 
 	$info = [
 		'time' => $currentTime,
 		'ip' => $_SERVER['REMOTE_ADDR'],
 		'url' => $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],
-		'ref-url' => $_SERVER['HTTP_REFERER'],
+		'ref-url' => $refUrl,
 	];
 
 	file_put_contents("logs/$currentDate", json_encode($info) . PHP_EOL, FILE_APPEND);
