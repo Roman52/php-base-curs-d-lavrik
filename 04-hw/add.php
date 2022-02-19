@@ -13,8 +13,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	if ($fields['title'] === '' || $fields['content'] === '' || $fields['categoryId'] === '') {
 		$err = 'Заполните все поля!';
 	} else {
-		addArticle($fields);
-		header('Location: index.php');
+		$lastPostId = addArticle($fields);
+		header("Location: article.php?id=$lastPostId");
 		exit();
 	}
 }

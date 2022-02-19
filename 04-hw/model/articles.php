@@ -8,29 +8,28 @@ function getArticles():array {
 	return $query->fetchAll();
 }
 
-function getArticle(int $article_id):array {
+function getArticle(int $article_id):?array {
 	$sql = "SELECT * FROM articles 
 	        JOIN categories ON articles.category_id = categories.id 
 	        WHERE article_id=$article_id";
 	$query = dbQuery($sql);
-	$post = $query->fetchAll();
-	// по идее тут лучше заюзать ->fetch, но он возвращает array если есть статья или bool если нет. А у нас функция возвращать должна что то одно
+	$post = $query->fetch();
 
-	if (empty($post)) {
-		return [];
-	} else {
-		return $post[0];
-	}
+	return $post === false ? null : $post ;
 }
 
-function addArticle(array $fields):bool {
+function addArticle(array $fields):int {
 	$sql = "INSERT articles (title, content, category_id) VALUES (:title, :content, :categoryId)";
 	dbQuery($sql, $fields);
+	//получить id последней добавленной статьи
+	$db = dbInstance();
 
-	return true;
+	return (int)$db->lastInsertId();
 }
 
 function removeArticle(int $article_id):bool {
+	// первый способ - проверить есть ли статья сделав доп запрос к базе.
+	/*
 	if (getArticle($article_id)) {
 		$sql = "DELETE FROM articles WHERE article_id=$article_id";
 		dbQuery($sql);
@@ -39,6 +38,17 @@ function removeArticle(int $article_id):bool {
 	}
 
 	return false;
+	*/
+
+	// второй способ - не делать доп запрос к базе, использовать PDO
+	$sql = "DELETE FROM articles WHERE article_id=$article_id";
+	$res = dbQuery($sql);
+
+	if ($res->rowCount() === 0) {
+		return false; // не удалилась статья
+	}
+
+	return true;
 }
 
 function updateArticle(array $fields, int $articleId):bool {

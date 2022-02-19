@@ -17,9 +17,7 @@ function dbQuery(string $sql, array $params = []): PDOStatement {
     $db = dbInstance();
     $query = $db->prepare($sql);
     $query->execute($params);
-    dbCheckError($query);
-    //не понимаю как делать редирект на статью поле добавления, нагуглил что id последней добавленной статьи возвращает метод $pdo->lastInsertId(), но он возвращает 0. А если распечатать $db - то это пустой объект.
-    //var_dump($db->lastInsertId());
+    //не понимаю как делать редирект на статью поле добавления, нагуглил что id последней добавленной статьи возвращает метод $pdo->lastInsertId(), но он возвращает 0. А если распечатать $db - то это пустой объект. - Ответ - нужно было это делать в функции addArticle. Нужно еще раз приконектиться к базе (получить instance базы) и заюзать метод lastIntertId()
 
     return $query;
 }
