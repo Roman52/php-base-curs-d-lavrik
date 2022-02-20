@@ -26,7 +26,6 @@ function dbCheckError(PDOStatement $query):bool {
     $errInfo = $query->errorInfo();
 
     if ($errInfo[0] !== PDO::ERR_NONE) {
-    	echo 123;
         echo $errInfo[2];
         exit();
     }
