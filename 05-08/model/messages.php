@@ -24,7 +24,7 @@ function addMessage(array $fields):bool {
 
 function messagesValidate(array &$fields):array {
 	$errors = [];
-	$nameLen = mb_strlen($fields['text'], 'UTF-8');
+	$nameLen = mb_strlen($fields['name'], 'UTF-8');
 	$textLen = mb_strlen($fields['text'], 'UTF-8');
 
 	if ($nameLen < 2) {

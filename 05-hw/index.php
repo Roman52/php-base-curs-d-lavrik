@@ -1,18 +1,12 @@
 <?php
-declare(strict_types=1);
-include_once('model/articles.php');
-$articles = getArticles();
-?>
+include_once ('core/validate.php');
+$cname = $_GET['c'] ?? 'index';
 
-<a href="add.php">Add article</a>
+if (isValidController($cname) && file_exists("controllers/$cname.php")) {
+	$path = "controllers/$cname.php";
+} else {
+	header('HTTP/1.1 404 Not Found');
+	$path = "views/errors/v_404.php";
+}
 
-<hr>
-<div class="articles">
-	<?php foreach($articles as $article): ?>
-		<div class="article">
-			<h2><?=$article['title']?></h2>
-			<a href="article.php?id=<?=$article['article_id']?>">Read more</a>
-		</div>
-	<?php endforeach; ?>
-</div>
-	
+include_once ($path);
