@@ -1,5 +1,7 @@
 <?php
-include_once('model/articles.php');
 $articles = getArticles();
 
-include ('views/v_index.php');
+$pageTitle = 'All articles';
+$pageContent = template('articles/v_index', [
+	'articles' => $articles,
+]);

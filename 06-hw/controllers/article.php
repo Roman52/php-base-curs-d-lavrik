@@ -1,12 +1,15 @@
 <?php
-include_once('model/articles.php');
 $id = (int)($_GET['id'] ?? '');
 $post = getArticle($id);
 $hasPost = $post !== null;
+$pageTitle = $post['title'] ?? 'Error';
 
 if ($hasPost) {
-	include ('views/v_article.php');
+	$pageContent = template('articles/v_article', [
+		'id' => $id,
+		'post' => $post,
+	]);
 } else {
 	header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found");
-	include ('views/errors/v_404.php');
+	$pageContent = template('errors/v_404');
 }
