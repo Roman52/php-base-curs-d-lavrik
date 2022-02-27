@@ -1,0 +1,13 @@
+<a href="index.php">View as list</a>
+<hr>
+<table class="table table-bordered">
+	<tbody>
+		{% for message in messages %}
+			<tr>
+				<td>{{ message.name }}</td>
+				<td>{{ message.dt_add }}</td>
+				<td>{{ message.status }}</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>
