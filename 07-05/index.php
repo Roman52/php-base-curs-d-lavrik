@@ -1,16 +1,20 @@
 <?php
-var_dump($_GET);
-
 include_once ('init.php');
-$cname = $_GET['c'] ?? 'index';
+
+$routes = include ('routes.php');
+$url = $_GET['querysystemurl'] ?? '';
+$routerRes = parseUrl($url, $routes);
+$cname = $routerRes['controller'] ?? 'index';
+define('URL_PARAMS', $routerRes['params']);
+
 $path = "controllers/$cname.php";
 $pageTitle = 'Error 404';
 $pageContent = '';
 
-if (checkControllerName($cname) && file_exists($path)) {
+if (file_exists($path)) {
 	include_once ($path);
 } else {
-	$pageContent = template('errors/v_404');
+	exit('Fatal Error');
 }
 
 $html = template('/base/v_main', [

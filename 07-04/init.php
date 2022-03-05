@@ -1,5 +1,5 @@
 <?php
-const BASE_URL = '/php1/07-03/';
+const BASE_URL = '/php1/07-04/';
 
 const DB_HOST = 'localhost';
 const DB_NAME = 'php1simple';

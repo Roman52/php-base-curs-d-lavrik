@@ -11,7 +11,7 @@
 				<div>
 					<?=$message['text']?>
 				</div>
-				<a href="<?=BASE_URL?>=message/<?=$message['id_message']?>">
+				<a href="<?=BASE_URL?>message/<?=$message['id_message']?>">
 					Read more
 				</a>
 				<hr>
