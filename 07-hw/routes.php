@@ -4,6 +4,7 @@ return (function(){
 	$intGT0 = '[1-9]+\d*';
 
 	return [
+		// articles
 		[
 			'test' => '/^$/',
 			'controller' => 'articles/all',
@@ -27,9 +28,34 @@ return (function(){
 			'controller' => 'articles/one',
 			'params' => ['id' => 1],
 		],
+
+		// categories
 		[
-			'test' => "/^categories\/($intGT0)\/?$/",
-			'controller' => 'categories/all',
+			'test' => "/^cats-list\/?$/",
+			'controller' => 'categories/cats_list',
+		],
+		[
+			'test' => "/^cats\/($intGT0)\/?$/",
+			'controller' => 'categories/cats_all_articles',
+			'params' => ['id' => 1],
+		],
+		[
+			'test' => '/^cats-add\/?$/',
+			'controller' => 'categories/cats_add',
+		],
+		[
+			'test' => "/^cats-delete\/($intGT0)\/?$/",
+			'controller' => 'categories/cats_delete',
+			'params' => ['id' => 1],
+		],
+		[
+			'test' => "/^cats-edit\/($intGT0)\/?$/",
+			'controller' => 'categories/cats_edit',
+			'params' => ['id' => 1],
+		],
+		[
+			'test' => "/^cat\/($intGT0)\/?$/",
+			'controller' => 'categories/cats_one',
 			'params' => ['id' => 1],
 		],
 	];

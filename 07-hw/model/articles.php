@@ -42,3 +42,10 @@ function updateArticle(array $fields, int $articleId):bool {
 
 	return true;
 }
+
+function getCategoryArticles($catId):array {
+	$sql = "SELECT * FROM articles WHERE category_id=$catId ORDER BY dt_add DESC";
+	$query = dbQuery($sql);
+
+	return $query->fetchAll();
+}

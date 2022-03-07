@@ -22,3 +22,21 @@ function validateFields(array &$fields):array {
 
 	return $errors;
 }
+
+function validateCategoryFields(array &$fields):array {
+	$errors = [];
+	$titleLen = mb_strlen($fields['cat_title'], 'UTF-8');
+
+	if ($titleLen < 2) {
+		$errors[] = 'Имя категории не короче 2 символов';
+	}
+
+	if (!preg_match('/^[aA-zZ0-9_\-?=\/&\.\:]*$/', $fields['cat_url'])) {
+		$errors[] = 'Не корректрый url';
+	}
+
+	$fields['cat_title'] = htmlspecialchars($fields['cat_title']);
+	$fields['cat_url'] = htmlspecialchars($fields['cat_url']);
+
+	return $errors;
+}

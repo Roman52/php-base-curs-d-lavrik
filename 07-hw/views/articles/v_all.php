@@ -1,5 +1,6 @@
 <main>
 	<h1>All articles</h1>
+	<hr>
 	<div class="articles">
 		<?php foreach($articles as $article): ?>
 			<div class="article">

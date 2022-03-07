@@ -14,7 +14,7 @@
 			<?php endif; ?>
 			<div class="form-group">
 				<label for="title">Title</label>
-				<input type="text" id="title" class="form-control" name="title" value="<?=$fields['title']?>"><br>
+				<input type="text" id="title" class="form-control" name="title" value="<?=$fields['title']?>">
 			</div>
 			<div class="form-group">
 				<label for="text">Text</label>

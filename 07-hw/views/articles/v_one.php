@@ -4,7 +4,7 @@
 		<div><?=$post['content']?></div>
 		<hr>
 		<div>Category:
-			<a href="<?=BASE_URL?>categories/<?=$post['category_id']?>"><?=$post['name']?></a>
+			<a href="<?=BASE_URL?>cats/<?=$post['category_id']?>"><?=$post['name']?></a>
 		</div>
 		<hr>
 		<a href="<?=BASE_URL?>edit/<?=$id?>">Edit | </a>

@@ -14,9 +14,29 @@ function getCategories():array {
 	return $query->fetchAll();
 }
 
-function getCategoryArticles($catId):array {
-	$sql = "SELECT * FROM articles WHERE category_id=$catId ORDER BY dt_add DESC";
-	$query = dbQuery($sql);
+function addCategory(array $fields):int {
+	$sql = "INSERT categories (name, url) VALUES (:cat_title, :cat_url)";
+	dbQuery($sql, $fields);
+	$db = dbInstance();
 
-	return $query->fetchAll();
+	return (int)$db->lastInsertId();
+}
+
+function removeCategory(int $categoryId):bool {
+	$sql = "DELETE FROM categories WHERE id=$categoryId";
+	$res = dbQuery($sql);
+
+	if ($res->rowCount() === 0) {
+		return false;
+	}
+
+	return true;
+}
+
+function updateCategory(array $fields, int $categoryId):bool {
+	$sql = "UPDATE categories SET name=:cat_title, url=:cat_url
+	        WHERE id=$categoryId";
+	dbQuery($sql, $fields);
+
+	return true;
 }

@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title><?=$title?></title>
+	<link rel="canonical" href="<?=$canonical?>">
 	<link rel="stylesheet" href="<?=BASE_URL?>assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="<?=BASE_URL?>assets/css/main.css">
 </head>
@@ -23,6 +24,12 @@
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="<?=BASE_URL?>add">Add article</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="<?=BASE_URL?>cats-add">Add category</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="<?=BASE_URL?>cats-list">All categories</a>
 			</li>
 		</ul>
 	</div>
