@@ -1,5 +1,9 @@
 <?php
+session_start();
+
 include_once ('init.php');
+$user = [];
+$user = authGetUser();
 
 $pageCanonical = HOST . BASE_URL;
 
@@ -25,6 +29,13 @@ if (strpos($uri, $wrongUrl) === 0) {
 $path = "controllers/$cname.php";
 $pageTitle = $pageContent = '';
 
+$authLink = 'auth/login';
+$authText = 'Login';
+if (!empty($user['name'])) {
+	$authText = $user['name'] . ' LouOut';
+	$authLink = 'auth/logout';
+}
+
 if (!file_exists($path)) {
 	$cname = 'errors/e404';
 	$path = "controllers/$cname.php";
@@ -36,6 +47,8 @@ $html = template('/base/v_main', [
 	'title' => $pageTitle,
 	'content' => $pageContent,
 	'canonical' => $pageCanonical,
+	'authText' => $authText,
+	'authLink' => $authLink,
 ]);
 
 echo $html;

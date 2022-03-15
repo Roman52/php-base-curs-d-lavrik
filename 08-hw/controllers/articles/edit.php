@@ -1,4 +1,9 @@
 <?php
+if ($user === null){
+	header('Location: ' . BASE_URL . 'auth/login');
+	exit();
+}
+
 $id = (int) URL_PARAMS['id'];
 $post = getArticle($id);
 $pageTitle = 'Edit article';

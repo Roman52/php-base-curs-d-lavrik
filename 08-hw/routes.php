@@ -58,5 +58,13 @@ return (function(){
 			'controller' => 'categories/cats_one',
 			'params' => ['id' => 1],
 		],
+		[
+			'test' => "/^auth\/login\/?$/",
+			'controller' => 'auth/login',
+		],
+		[
+			'test' => "/^auth\/logout\/?$/",
+			'controller' => 'auth/logout',
+		],
 	];
 })();
