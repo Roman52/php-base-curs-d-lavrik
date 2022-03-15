@@ -5,13 +5,22 @@ if ($user === null){
 }
 
 $id = (int) URL_PARAMS['id'];
-$postRemoved = removeArticle($id);
+$post = getArticle($id);
 $pageTitle = 'Delete article';
 
-if ($postRemoved) {
-	$pageContent = template('articles/v_delete');
+if ($user['id_user'] !== $post['user_id']) {
+	$pageContent = template('auth/v_wrong_user');
 } else {
-	header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found");
-	$pageContent = template('errors/v_error');
+	$postRemoved = removeArticle($id);
+
+	if ($postRemoved) {
+		$pageContent = template('articles/v_delete');
+	} else {
+		header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found");
+		$pageContent = template('errors/v_error');
+	}
 }
+
+
+
 

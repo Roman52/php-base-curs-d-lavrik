@@ -8,6 +8,7 @@ $categories = getCategories();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$fields = extractFields($_POST, ['title', 'content', 'categoryId']);
+	$fields['userId'] = $user['id_user'];
 	$validateErrors = validateFields($fields);
 
 	if (empty($validateErrors)) {

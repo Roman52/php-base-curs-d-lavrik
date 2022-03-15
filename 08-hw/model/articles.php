@@ -17,7 +17,7 @@ function getArticle(int $article_id):?array {
 }
 
 function addArticle(array $fields):int {
-	$sql = "INSERT articles (title, content, category_id) VALUES (:title, :content, :categoryId)";
+	$sql = "INSERT articles (title, content, category_id, user_id) VALUES (:title, :content, :categoryId, :userId)";
 	dbQuery($sql, $fields);
 	$db = dbInstance();
 

@@ -6,8 +6,10 @@
 		<div>Category:
 			<a href="<?=BASE_URL?>cats/<?=$post['category_id']?>"><?=$post['name']?></a>
 		</div>
-		<hr>
-		<a href="<?=BASE_URL?>edit/<?=$id?>">Edit | </a>
-		<a href="<?=BASE_URL?>delete/<?=$id?>">Remove</a>
+		<?php if ($showLinks) : ?>
+			<hr>
+			<a href="<?=BASE_URL?>edit/<?=$id?>">Edit | </a>
+			<a href="<?=BASE_URL?>delete/<?=$id?>">Remove</a>
+		<?php endif; ?>
 	</div>
 </main>
